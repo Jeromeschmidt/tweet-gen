@@ -42,5 +42,9 @@ def delete_tweet(tweet_id):
 def view_favorites():
     return render_template('view_favorites.html', tweets=tweet_coll.find().sort([('created_at', -1)]))
 
+@app.route('/description')
+def description():
+    return render_template('description.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
