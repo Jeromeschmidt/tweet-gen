@@ -29,7 +29,8 @@ def save_tweet(sentence):
     # ADD PIECE THAT TWEETS IT OUT
 
     sentence = get_sentence(random.randint(5,20))
-    return render_template('index.html', sentence=sentence)
+    # return render_template('index.html', sentence=sentence)
+    return redirect(url_for('index', sentence=sentence))
 
 # @app.route('/<sentence>')
 def delete_tweet(tweet_id):
