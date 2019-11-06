@@ -27,7 +27,7 @@ def save_tweet(sentence):
     tweet_id = tweet_coll.insert_one(tweet).inserted_id
 
     # ADD PIECE THAT TWEETS IT OUT
-    
+
     sentence = get_sentence(random.randint(5,20))
     return render_template('index.html', sentence=sentence)
 
@@ -35,3 +35,6 @@ def save_tweet(sentence):
 def delete_tweet(tweet_id):
     tweet_coll.delete_one({'_id': ObjectId(tweet_id)})
     return render_template('index.html', sentence=sentence)
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
