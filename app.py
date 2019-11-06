@@ -29,7 +29,7 @@ def save_tweet(sentence):
 
     # ADD PIECE THAT TWEETS IT OUT
 
-    sentence = get_sentence(random.randint(1,20))
+    # sentence = get_sentence(random.randint(1,20))
     return redirect(url_for('index', sentence=sentence))
 
 @app.route('/view_favorites/<tweet_id>/delete', methods=['POST'])
