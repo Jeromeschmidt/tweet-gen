@@ -107,10 +107,10 @@ def get_sentence(num_of_words):
 
 if __name__ == '__main__':
 
-    with open(sys.argv[1],'r') as file:
-        text = file.read()
-        text = re.sub(r'[^a-zA-Z\s]', '', text)
-        text = text.split()
+    # with open(sys.argv[1],'r') as file:
+    #     text = file.read()
+    #     text = re.sub(r'[^a-zA-Z\s]', '', text)
+    #     text = text.split()
     # file = sys.argv[1]
     # text = open(file,"r").read()
     # text = re.sub(r'[^a-zA-Z\s]', '', text)

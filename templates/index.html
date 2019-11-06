@@ -2,8 +2,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Sherlock Tweet Generator</h1>
-<div class='row'>
+<center>
+    <h1>placeholder Tweet Generator</h1>
     <p>{{ sentence }}</p>
-</div>
+    <br>
+    <div class="row">
+        <div class='form-group' action="/">
+            <button class='btn btn-primary' onClick="window.location.reload()">New Tweet</button>
+        </div>
+        <!-- <div class='form-group' action="/save_tweet">
+            <button class='btn btn-primary' type="submit" value="{{sentence}}">Save Tweet</button>
+        </div> -->
+        <div class='form-group' action="/{{ sentence }}">
+            <a href="/{{ sentence }}"
+            <button class='btn btn-primary' ">Save Tweet</button>
+            </a>
+        </div>
+    </div>
+    <!-- <div class="form-group col-xs-2">
+        <input class="form-control form-control-sm" type="text" placeholder="How many words would you like?" id="inputSmall" type='submit' value='{{ num_of_words }}'>
+    </div> -->
+</center>
 {% endblock %}
