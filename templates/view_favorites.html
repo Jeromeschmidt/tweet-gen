@@ -2,12 +2,12 @@
 <!-- <div class='row'> -->
 <div class='container'>
     <center>
-        <link rel='stylesheet' href='https://bootswatch.com/4/lux/bootstrap.min.css'>
+        <link rel='stylesheet' href='https://bootswatch.com/4/materia/bootstrap.min.css'>
         <div>
             {% for tweet in tweets %}
-                <h2>{{ tweet.tweet_content }}</h2>
-                <form method='POST' action='/view_favorites/{{ tweet._id }}/delete'>
-                    <button type='submit'>DELETE</button>
+                <h4>{{ tweet.tweet_content }}</h4>
+                <form class='form-group' method='POST' action='/view_favorites/{{ tweet._id }}/delete'>
+                    <button class='btn btn-primary' type='submit'>DELETE</button>
                 </form>
             {% endfor %}
         </div>
