@@ -1,0 +1,15 @@
+<a href='/'>Back to Home</a>
+<!-- <div class='row'> -->
+<div class='container'>
+    <center>
+        <link rel='stylesheet' href='https://bootswatch.com/4/lux/bootstrap.min.css'>
+        <div>
+            {% for tweet in tweets %}
+                <h2>{{ tweet.tweet_content }}</h2>
+                <form method='POST' action='/view_favorites/{{ tweet._id }}/delete'>
+                    <button type='submit'>DELETE</button>
+                </form>
+            {% endfor %}
+        </div>
+    </center>
+</div>

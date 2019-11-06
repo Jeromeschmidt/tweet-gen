@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from sample import get_sentence
 from datetime import datetime
 import random
@@ -32,10 +33,20 @@ def save_tweet(sentence):
     # return render_template('index.html', sentence=sentence)
     return redirect(url_for('index', sentence=sentence))
 
-# @app.route('/<sentence>')
+# # @app.route('/<sentence>')
+# def delete_tweet(tweet_id):
+#     tweet_coll.delete_one({'_id': ObjectId(tweet_id)})
+#     return render_template('index.html', sentence=sentence)
+
+@app.route('/view_favorites/<tweet_id>/delete', methods=['POST'])
 def delete_tweet(tweet_id):
+    """Delete one item."""
     tweet_coll.delete_one({'_id': ObjectId(tweet_id)})
-    return render_template('index.html', sentence=sentence)
+    return redirect(url_for('view_favorites'))
+
+@app.route('/view_favorites')
+def view_favorites():
+    return render_template('view_favorites.html', tweets=tweet_coll.find())
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
