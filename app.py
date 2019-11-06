@@ -17,7 +17,7 @@ def index():
     sentence = get_sentence(random.randint(5,20))
     return render_template('index.html', sentence=sentence)
 
-@app.route('/<sentence>')
+@app.route('/<sentence>', methods=['POST'])
 def save_tweet(sentence):
     """saves a given phrase as a tweet in a db and tweets it out"""
     tweet = {
