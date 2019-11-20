@@ -5,7 +5,7 @@ from utils import time_it
 
 # random.seed(42)
 
-@time_it
+# @time_it
 def find_weights(text):
     weights = {}
     size = len(text)
@@ -26,6 +26,30 @@ def find_weights(text):
         weights[word.lower()] = weights[word.lower()]/size
     return weights
 
+# @time_it
+def find_weights_dict(dict):
+    weights = {}
+    size = 0
+    for elm in dict:
+        size += dict[elm]
+    for elm in dict:
+        weights[elm] = dict[elm]
+    for word in weights:
+        # try:
+        weights[word.lower()] = weights[word.lower()]/size
+        # except KeyError:
+        #     weights[word.lower()] = 1
+    return weights
+
+def find_weights_by_length(dict):
+    total_length = 0
+    weights = {}
+
+    for elm in dict:
+        total_length += len(elm)
+    for elm in dict:
+        weights[elm] = len(elm)/total_length
+        print(weights[elm])
 
 @time_it
 def find_weights_list(text):
@@ -69,7 +93,7 @@ def run(weights, number_of_iter):
                     results[key] = 1
     return results
 
-@time_it
+# @time_it
 def find_ranges(weights):
     range_temp = 0
     ranges = {}
@@ -107,10 +131,11 @@ def get_sentence(num_of_words):
 
 if __name__ == '__main__':
 
-    # with open(sys.argv[1],'r') as file:
-    #     text = file.read()
-    #     text = re.sub(r'[^a-zA-Z\s]', '', text)
-    #     text = text.split()
+    with open(sys.argv[1],'r') as file:
+        text = file.read()
+        text = re.sub(r'[^a-zA-Z\s]', '', text)
+        text = text.split()
+    dict = find_weights_by_length(text)
     # file = sys.argv[1]
     # text = open(file,"r").read()
     # text = re.sub(r'[^a-zA-Z\s]', '', text)
@@ -123,7 +148,7 @@ if __name__ == '__main__':
     # print(run(dict, 1000000))
     # test1 = run(dict, number_of_iter)
     # test2 = run_list(list_weights, number_of_iter)
-    print(get_sentence(10))
+    # print(get_sentence(10))
     # print(run_list(list_weights, 1000000))
     # print(list_weights)
     # print(find_ranges(dict))
